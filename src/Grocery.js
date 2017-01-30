@@ -4,8 +4,19 @@ import './Grocery.css';
 
 const Grocery = ({ name, quantity, notes, purchased, starred, onPurchase, onStar, onDelete }) => {
   return (
-    <article className={classnames('Grocery', { starred })}>
+    <article className={classnames('Grocery', { starred, purchased })}>
       <h3>{name}</h3>
+
+      {quantity && <p className="Grocery-quantity">Quantity: {quantity}</p>}
+
+      {notes && <p className="Grocery-notes">Notes: {notes}</p>}
+
+      <button className='Grocery-purchase' onClick={onPurchase}>{!purchased?'Purchase':'Unpurchase'}</button>
+
+      <button className='Grocery-starred' onClick={onStar}>{!starred?'Star':'Unstar'}</button>
+
+      <button className='Grocery-delete' onClick={onDelete}>Delete</button>
+
     </article>
   );
 };
